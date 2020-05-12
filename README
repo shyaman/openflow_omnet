@@ -1,0 +1,16 @@
+IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+xhost +
+docker run --rm -it -v "$(pwd)/out:/root/models" -u "$(id -u):$(id -g)" -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${IP}:0 om:latest
+
+Type omnetpp and /root/models workspace
+
+File -> Import -> General -> Existing Projects into workspace
+
+Browse and select(inside) models directory 
+
+Let indexing to be done
+
+Cntrl + B to build (ignore errors)
+
+Still not working!
+
